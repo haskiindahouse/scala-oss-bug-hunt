@@ -6,6 +6,14 @@ Every bug below has a minimal, runnable reproducer (`scala-cli`, Scala 3.8.3 + l
 
 ## Issues filed
 
+### [com-lihaoyi/scalasql](https://github.com/com-lihaoyi/scalasql)
+
+- [#113](https://github.com/com-lihaoyi/scalasql/issues/113) — take(m).drop(n) with n > m generates negative LIMIT, rejected by every supported dialect
+
+### [com-lihaoyi/upickle](https://github.com/com-lihaoyi/upickle)
+
+- [#702](https://github.com/com-lihaoyi/upickle/issues/702) — MsgPackReader silently returns empty Array/Map for Array32/Map32 with length >= 2^31
+
 ### [dotty-cps-async/dotty-cps-async](https://github.com/dotty-cps-async/dotty-cps-async)
 
 - [#119](https://github.com/dotty-cps-async/dotty-cps-async/issues/119) — EitherAsyncShift.forall returns false for Left (should be true)
@@ -13,11 +21,36 @@ Every bug below has a minimal, runnable reproducer (`scala-cli`, Scala 3.8.3 + l
 - [#121](https://github.com/dotty-cps-async/dotty-cps-async/issues/121) — UsingAsyncShift.apply leaks the resource on the failure path
 - [#122](https://github.com/dotty-cps-async/dotty-cps-async/issues/122) — IndexedSeqAsyncShift.indexWhere ignores the from parameter
 - [#123](https://github.com/dotty-cps-async/dotty-cps-async/issues/123) — ArrayOpsAsyncShift.dropWhile returns Array(head) instead of empty when all elements match
+- [#124](https://github.com/dotty-cps-async/dotty-cps-async/issues/124) — BreaksAsyncShift.breakable discards the body computation via value-discarding to Unit
+- [#125](https://github.com/dotty-cps-async/dotty-cps-async/issues/125) — ArrayOpsAsyncShift.lastIndexWhere doesn't clamp end, throws IndexOutOfBoundsException
 
 ### [ghostdogpr/caliban](https://github.com/ghostdogpr/caliban)
 
 - [#2941](https://github.com/ghostdogpr/caliban/issues/2941) — ResponseValue.ObjectValue.equals compares hashCode only — violates equals contract
 - [#2942](https://github.com/ghostdogpr/caliban/issues/2942) — ResponseValue.deepMerge drops fields from the right-hand side that aren't in the left
+- [#2943](https://github.com/ghostdogpr/caliban/issues/2943) — GraphQLResponse.withExtension creates duplicate keys instead of replacing
+- [#2944](https://github.com/ghostdogpr/caliban/issues/2944) — StringValue.toString and EnumValue.toString skip backslash, backtick, tab, backspace and form-feed escapes
+- [#2945](https://github.com/ghostdogpr/caliban/issues/2945) — Connection.fromList returns wrong hasPreviousPage / hasNextPage when paginating with cursor
+- [#2946](https://github.com/ghostdogpr/caliban/issues/2946) — Field.resolveVariables silently drops arguments backed by nullable variables with no value
+- [#2947](https://github.com/ghostdogpr/caliban/issues/2947) — validateSubscriptionOperation only checks the first subscription operation in the document
+
+### [http4s/http4s](https://github.com/http4s/http4s)
+
+- [#7835](https://github.com/http4s/http4s/issues/7835) — HttpDate.fromInstant truncates negative epochs toward zero, off by one second before 1970
+- [#7836](https://github.com/http4s/http4s/issues/7836) — Content-Range parser and constructor accept invalid ranges where first > last
+- [#7837](https://github.com/http4s/http4s/issues/7837) — Set-Cookie Max-Age parser rejects negative values that RFC 6265 specifies as valid
+- [#7838](https://github.com/http4s/http4s/issues/7838) — UriCoding.encode sign-extends bytes >= 0x80 when calling toSkip, breaking custom predicates for non-ASCII
+- [#7839](https://github.com/http4s/http4s/issues/7839) — HttpsRedirect middleware bakes the port into the hostname (or drops it entirely) in the redirect Location
+- [#7840](https://github.com/http4s/http4s/issues/7840) — CORS default policy allows PUT/PATCH/DELETE despite docstring saying GET, HEAD, POST only
+- [#7841](https://github.com/http4s/http4s/issues/7841) — RelaxedCookies parser accepts DEL (0x7F) and C1 control characters in cookie values
+- [#7842](https://github.com/http4s/http4s/issues/7842) — Keep-Alive reservedTokens has typo "token" instead of "timeout"
+- [#7843](https://github.com/http4s/http4s/issues/7843) — Retry-After delay-seconds parser throws NumberFormatException on overflow instead of returning ParseFailure
+- [#7844](https://github.com/http4s/http4s/issues/7844) — Host header constructor and parser accept invalid port numbers (negative, > 65535)
+- [#7845](https://github.com/http4s/http4s/issues/7845) — VirtualHost.wildcard allows regex injection through unescaped metacharacters
+- [#7846](https://github.com/http4s/http4s/issues/7846) — Caching middleware Expires arithmetic can overflow Long for large but finite lifetimes
+- [#7847](https://github.com/http4s/http4s/issues/7847) — Throttle.defaultResponse silently drops the retryAfter parameter — no Retry-After header on 429
+- [#7848](https://github.com/http4s/http4s/issues/7848) — VirtualHost.regex uses partial match instead of full match — host header spoofing
+- [#7849](https://github.com/http4s/http4s/issues/7849) — Access-Control-Max-Age.Cache.apply bypasses the validation in fromLong
 
 ### [Iltotore/iron](https://github.com/Iltotore/iron)
 
@@ -41,6 +74,17 @@ Every bug below has a minimal, runnable reproducer (`scala-cli`, Scala 3.8.3 + l
 - [#1048](https://github.com/propensive/soundness/issues/1048) — iridescence `Hsl.saturate`/`desaturate`/`rotate`/`pure` return `Hsv` instead of `Hsl
 - [#1049](https://github.com/propensive/soundness/issues/1049) — geodesy `Compass.points8` lists `Southwest` twice; `Northwest` is missing
 - [#1050](https://github.com/propensive/soundness/issues/1050) — caesura `Dsv` showable only quotes cells containing the quote char, not the delimiter or newlines
+- [#1051](https://github.com/propensive/soundness/issues/1051) — parasite Task.apply silently ignores the daemon parameter, hardcodes daemon = false
+- [#1052](https://github.com/propensive/soundness/issues/1052) — parasite Promise.await(duration) passes relative nanos to LockSupport.parkUntil (expects absolute millis)
+- [#1053](https://github.com/propensive/soundness/issues/1053) — feudalism Semaphore.access / Semaphore.isolate use notify() instead of notifyAll() — lost wakeups
+- [#1054](https://github.com/propensive/soundness/issues/1054) — hallucination Raster.crop swaps top/bottom in the pixel mapping
+- [#1055](https://github.com/propensive/soundness/issues/1055) — profanity Signal.id formula returns wrong POSIX numbers (SIGHUP becomes -1)
+- [#1056](https://github.com/propensive/soundness/issues/1056) — telekinesis Context backs session storage with an unsynchronised mutable HashMap
+- [#1057](https://github.com/propensive/soundness/issues/1057) — gastronomy Long Digestible uses wrong shift range and loses two bytes per Long
+- [#1058](https://github.com/propensive/soundness/issues/1058) — denominative Ordinal.subsequent(size) returns an Interval of size+1 (off-by-one)
+- [#1059](https://github.com/propensive/soundness/issues/1059) — revolution manifestAttributes objects misspell ``SpecificationVendor`` / ``SpecificationVersion`` as ``Specifacation*
+- [#1060](https://github.com/propensive/soundness/issues/1060) — acyclicity Dag.sort uses unsafe .get and crashes with NoSuchElementException on cyclic graphs
+- [#1061](https://github.com/propensive/soundness/issues/1061) — revolution Semver ordering is wrong for equal versions and for release-vs-prerelease
 
 ### [raquo/Laminar](https://github.com/raquo/Laminar)
 
@@ -65,15 +109,41 @@ Every bug below has a minimal, runnable reproducer (`scala-cli`, Scala 3.8.3 + l
 
 - [#272](https://github.com/scalus3/scalus/issues/272) — NonNegativeInterval overrides equals (compares reduced fractions) but not hashCode
 
+### [sirthias/borer](https://github.com/sirthias/borer)
+
+- [#829](https://github.com/sirthias/borer/issues/829) — Reader.longCompare returns the wrong sign due to Long subtraction overflow
+
 ### [takapi327/ldbc](https://github.com/takapi327/ldbc)
 
 - [#710](https://github.com/takapi327/ldbc/issues/710) — [Bug]: PooledDataSource.validateConnection uses handleError, dropping debug log effect
 - [#711](https://github.com/takapi327/ldbc/issues/711) — [Bug]: buildBatchQuery splits on case-sensitive "VALUES", breaks for lowercase "values"
 - [#712](https://github.com/takapi327/ldbc/issues/712) — [Bug]: Statement.execute throws MatchError for SHOW/DESCRIBE/EXPLAIN and other result-set queries
 
+### [typelevel/fs2](https://github.com/typelevel/fs2)
+
+- [#3725](https://github.com/typelevel/fs2/issues/3725) — text.linesLimited lets through arbitrarily long lines when the line and its terminator land in the same chunk
+
+### [typelevel/skunk](https://github.com/typelevel/skunk)
+
+- [#1295](https://github.com/typelevel/skunk/issues/1295) — timestamptz precision error message has typo "timestampz" (missing "t")
+
+### [wvlet/wvlet](https://github.com/wvlet/wvlet)
+
+- [#1697](https://github.com/wvlet/wvlet/issues/1697) — doubleQuoteIfNecessary doesn't escape internal double quotes, producing malformed SQL identifiers
+- [#1698](https://github.com/wvlet/wvlet/issues/1698) — TripleQuoteString.sqlExpr drops embedded newlines from triple-quoted string literals
+
 ### [xebia-functional/Unwrapped](https://github.com/xebia-functional/Unwrapped)
 
 - [#136](https://github.com/xebia-functional/Unwrapped/issues/136) — zipWithIndex shares its counter across stream consumptions
+
+### [zio/zio](https://github.com/zio/zio)
+
+- [#10883](https://github.com/zio/zio/issues/10883) — Schedule.dayOfMonth(30) crashes with DateTimeException in months that don't have day 30
+
+### [zio/zio-protoquill](https://github.com/zio/zio-protoquill)
+
+- [#747](https://github.com/zio/zio-protoquill/issues/747) — transaction commit/rollback wrapped in ZIO.succeed turns JDBC errors into unhandled defects
+- [#748](https://github.com/zio/zio-protoquill/issues/748) — JdbcContext.probe leaks the JDBC Statement (never closed)
 
 ### [zio/zio-schema](https://github.com/zio/zio-schema)
 
