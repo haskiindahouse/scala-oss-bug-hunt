@@ -2,7 +2,7 @@
 
 A list of bugs I found in the Scala ecosystem with an AI-assisted fuzzing setup using [Idris 2](https://github.com/idris-lang/Idris2) and [DepTyCheck](https://github.com/buzden/deptycheck/).
 
-Every bug below has a minimal, runnable reproducer (`scala-cli`, Scala 3.8.3 + latest library version). I reviewed each one by hand before opening the issue. If something turns out not to be a real bug, sorry — please let me know in the corresponding upstream issue.
+Every bug below has a minimal, runnable reproducer (`scala-cli`, Scala 3.8.3 + latest library version). If something turns out not to be a real bug, sorry — please let me know in the corresponding upstream issue.
 
 ## Issues filed
 
